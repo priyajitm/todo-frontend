@@ -39,7 +39,7 @@ export const AppProvider = ({ children }) => {
       title: task,
       completed: false,
     };
-    const response = await axios.post("/addtask", taskData);
+    const response = await axios.post(`${baseUrl}/addtask`, taskData);
     if (response.status === 201) {
       dispatch({
         type: "NEW_TASK",
@@ -51,7 +51,7 @@ export const AppProvider = ({ children }) => {
   // Changing Status from Completed(false) to Completed(true)
   const changeStatus = async (id, completed) => {
     console.log(id, completed);
-    const response = await axios.post("/updatetask", { id, completed });
+    const response = await axios.post(`${baseUrl}/updatetask`, { id, completed });
 
     if (response.status === 200) {
       const data = state.tasks.map((task) => {
@@ -69,7 +69,7 @@ export const AppProvider = ({ children }) => {
 
    // Deleting A Task
    const deleteTask = async (id) => {
-    const response = await axios.post(`/deletetask/${id}`);
+    const response = await axios.post(`${baseUrl}/deletetask/${id}`);
     if (response.status === 200) {
       const data = state.tasks.filter((task) => task.taskid !== id);
       dispatch({
@@ -81,7 +81,7 @@ export const AppProvider = ({ children }) => {
 
    // Updating Task Title
    const saveTask = async (val, id) => {
-    const response = await axios.post("/updatetask", { id, title: val });
+    const response = await axios.post(`${baseUrl}/updatetask`, { id, title: val });
 
     if (response.status === 200) {
       const data = state.tasks.map((task) => {
@@ -99,7 +99,7 @@ export const AppProvider = ({ children }) => {
 
   // Login User
   const loginUser = async (userName, password) => {
-        const res = await axios.post('/login', {username: userName, password})
+        const res = await axios.post(`${baseUrl}/login`, {username: userName, password})
         console.log(res)
     }
 

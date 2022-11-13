@@ -3,6 +3,8 @@ import axios from "axios";
 import AppReducer from "./AppReducer";
 import { v4 as uuidv4 } from "uuid";
 
+const baseUrl = 'https://todoedureka.cyclic.app/'
+
 const initialState = {
   tasks: [],
 };
@@ -12,7 +14,7 @@ export const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
   // Reducer Method
   const [state, dispatch] = useReducer(AppReducer, initialState);
-
+  
   /*
     ----------------------------------
     Actions
@@ -21,7 +23,7 @@ export const AppProvider = ({ children }) => {
 
   // Get All The tasks from API
   const getTasks = async () => {
-    const response = await axios.get("/gettasks");
+    const response = await axios.get(`${baseUrl}/gettasks`);
     dispatch({
       type: "TASKS_DATA",
       payload: response.data.tasks,

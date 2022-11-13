@@ -32,7 +32,7 @@ const TaskContainer = ({
       <p className="task-header">{title}</p>
 
       {tasksList.map((task) => {
-        if (showEdit && task.taskid == taskID) {
+        if (showEdit && task.taskid === taskID) {
           return (
             <div className="task">
               <input

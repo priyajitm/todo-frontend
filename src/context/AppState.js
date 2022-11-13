@@ -3,7 +3,7 @@ import axios from "axios";
 import AppReducer from "./AppReducer";
 import { v4 as uuidv4 } from "uuid";
 
-const baseUrl = 'https://todoedureka.cyclic.app/'
+const baseUrl = 'https://todoedureka.cyclic.app'
 
 const initialState = {
   tasks: [],
